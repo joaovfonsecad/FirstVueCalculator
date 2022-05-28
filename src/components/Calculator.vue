@@ -32,7 +32,7 @@ export default {
       previous: "",
       operation: null,
       clicked: false,
-      buttonClicked: false
+      buttonClicked: false,
     };
   },
   methods: {
@@ -70,8 +70,6 @@ export default {
       if (!this.clicked) {
         this.previous = this.current;
         this.clicked = true;
-      } else {
-        this.equals();
       }
     },
     divide() {
@@ -92,8 +90,8 @@ export default {
     },
     equals() {
       this.current = `${this.operation(
-        parseFloat(this.previous),
-        parseFloat(this.current)
+        parseFloat(this.current),
+        parseFloat(this.previous)
       )}`;
     },
   },
@@ -121,7 +119,7 @@ export default {
   align-items: center;
   justify-content: flex-end;
   padding-right: 1em;
-  height: 2.5em;
+  height: 70px;
 }
 
 .zero {
@@ -135,10 +133,27 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  user-select: none;
+}
+
+.btn:hover {
+  background: #d7d7d7;
+}
+
+.btn:active {
+  box-shadow: inset 0 0 .15em .05em #999;
 }
 
 .operator {
-  background: orange;
+  background: rgb(81, 102, 61);
   color: white;
+}
+
+.operator:hover {
+  background: rgb(93, 114, 72);
+}
+
+.operator:active {
+  box-shadow: inset 0 0 .3em rgb(130, 170, 92);
 }
 </style>
