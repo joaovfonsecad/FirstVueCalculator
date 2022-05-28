@@ -32,6 +32,7 @@ export default {
       previous: "",
       operation: null,
       clicked: false,
+      buttonClicked: false
     };
   },
   methods: {
@@ -66,9 +67,11 @@ export default {
       }
     },
     setOperation() {
-      if (this.clicked === false) {
+      if (!this.clicked) {
         this.previous = this.current;
         this.clicked = true;
+      } else {
+        this.equals();
       }
     },
     divide() {
@@ -101,12 +104,13 @@ export default {
 <style scoped>
 .calculator {
   margin: 0 auto;
-  width: 300px;
+  width: 250px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(50px, auto);
   font-size: 1.7em;
   caret-color: transparent;
+  box-shadow: 0 0 2em #333;
 }
 
 .display {
@@ -117,6 +121,7 @@ export default {
   align-items: center;
   justify-content: flex-end;
   padding-right: 1em;
+  height: 2.5em;
 }
 
 .zero {
